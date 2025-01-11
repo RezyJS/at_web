@@ -1,5 +1,3 @@
-import { NextRequest } from "next/server";
-
-export default function POST(request: NextRequest) {
+export default function POST() {
 
 }

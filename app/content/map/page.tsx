@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 
 // import dynamic from "next/dynamic";
 
@@ -6,8 +6,10 @@
 //   ssr: false,
 // })
 
-// export default function Map() {
-//   return (
-//     <MapObject />
-//   )
-// }
+export default function Map() {
+  return (
+    <div>
+      {/* <MapObject /> */}
+    </div>
+  )
+}

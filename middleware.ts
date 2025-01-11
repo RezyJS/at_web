@@ -36,14 +36,25 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(`${baseURL}/content/news`)
   }
 
-  if (url.startsWith('/api')) {
-    const response = NextResponse.next();
-    if (token) {
-      response.headers.set('x-token', token.value);
-    }
-    if (refreshToken) {
-      response.headers.set('x-refreshToken', refreshToken.value);
-    }
+  if (url.startsWith('/api') && url !== '/api/refreshToken') {
+
+    console.log(`Middleware interrupted. Cookies && request url:`)
+    console.log(`\t${url}\n\t${cookies}`)
+
+    const headers = new Headers({
+      'x-token': token?.value ? token.value : '',
+      'x-refreshToken': refreshToken?.value ? refreshToken.value : '',
+    })
+
+    const response = NextResponse.next({ 
+      request: {
+        headers
+      }
+    });
+
+    console.log(`Request Headers:`)
+    console.log(`${JSON.stringify(response.headers)}`)
+
     return response;
   }
 

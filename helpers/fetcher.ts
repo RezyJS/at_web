@@ -24,10 +24,15 @@ export default async function fetcher({
     )
   };
 
+  console.log(`Fetcher headers:\n${JSON.stringify(headers)}`)
+
   const firstFetchAttempt = await tryFetch({ url, params, headers });
 
   if (firstFetchAttempt.status === 401) {
     try {
+
+      console.log(`Fetcher trying refresh token`)
+
       const tokens = await fetch(`${baseURL}/api/refreshToken`, { method: 'POST', headers: { ...headers } });
       const { token, refreshToken } = await tokens.json();
 

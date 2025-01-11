@@ -14,6 +14,8 @@ export async function GET(request: NextRequest) {
       }
     }
   );
+
+  console.log(`Response from API:\n\t${apiResponse.status}`)
   
   return apiResponse;
 }

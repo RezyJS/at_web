@@ -4,14 +4,14 @@ const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function POST(request: NextRequest) {
   try { 
-    const token = request.cookies.get('token');
-    const refreshToken = request.cookies.get('refreshToken');
+    const token = request.headers.get('x-token');
+    const refreshToken = request.headers.get('x-refreshToken');
     
     const apiResponse = await fetch(`${apiURL}/v1/auth/logout`,{
-      body: JSON.stringify({ token: refreshToken?.value }),
+      body: JSON.stringify({ token: refreshToken }),
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${token?.value}`,
+        'Authorization': `Bearer ${token}`,
       }
     })
     

@@ -1,62 +1,79 @@
-import { NextRequest, NextResponse } from 'next/server';
-
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+// middleware.ts
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
-  const { nextUrl, cookies } = request;
-  const url = nextUrl.pathname;
+  const accessToken = request.cookies.get('accessToken')?.value;
+  const refreshToken = request.cookies.get('refreshToken')?.value;
 
-  const token = cookies.get('token');
-  const refreshToken = cookies.get('refreshToken');
-
-  const isRefreshTokenNotEmpty = () => {
-    return refreshToken && refreshToken.value !== ''
-  }
-
-  const isUrlOrAPI = (url: string, secondURL: string) => {
-    return url.startsWith('/api') || url.startsWith(secondURL)
-  }
-
-  if (url.startsWith('/_next')) {
-    return NextResponse.next();
-  }
-
-  if (
-    url === '/'
-    || !isRefreshTokenNotEmpty()
-    && !isUrlOrAPI(url, '/auth')
-  ) {
-    return NextResponse.redirect(`${baseURL}/auth/login`)
-  }
-
-  if (
-    isRefreshTokenNotEmpty()
-    && !isUrlOrAPI(url, '/content')
-  ) {
-    return NextResponse.redirect(`${baseURL}/content/news`)
-  }
-
-  if (url.startsWith('/api') && url !== '/api/refreshToken') {
-
-    console.log(`Middleware interrupted. Cookies && request url:`)
-    console.log(`\t${url}\n\t${cookies}`)
-
-    const headers = new Headers({
-      'x-token': token?.value ? token.value : '',
-      'x-refreshToken': refreshToken?.value ? refreshToken.value : '',
-    })
-
-    const response = NextResponse.next({ 
-      request: {
-        headers
-      }
+  // Function to refresh tokens
+  const refreshTokens = async () => {
+    const refreshResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/refresh`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token: refreshToken }),
     });
 
-    console.log(`Request Headers:`)
-    console.log(`${JSON.stringify(response.headers)}`)
+    if (refreshResponse.ok) {
+      const { token: newAccessToken, refresh_token: newRefreshToken } = await refreshResponse.json();
 
-    return response;
+      // Create a response object
+      const response = NextResponse.next();
+      response.cookies.set('accessToken', newAccessToken, {
+        httpOnly: true,
+        maxAge: 15 * 60, // 15 minutes
+        // secure: true, // Enable in production
+        sameSite: 'strict',
+      });
+      response.cookies.set('refreshToken', newRefreshToken, {
+        httpOnly: true,
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+        // secure: true, // Enable in production
+        sameSite: 'strict',
+      });
+
+      return response;
+    } else {
+      // If refresh fails, clear cookies and redirect to login
+      const response = NextResponse.redirect(new URL('/auth', request.url));
+      response.cookies.delete('accessToken');
+      response.cookies.delete('refreshToken');
+      return response;
+    }
+  };
+
+  // If no accessToken but refreshToken exists, try to refresh tokens
+  if (!accessToken && refreshToken) {
+    return refreshTokens();
   }
 
-  return NextResponse.next();
+  // If no tokens are found and the user is not on an auth page, redirect to login
+  if (!accessToken && !refreshToken && !(request.nextUrl.pathname.startsWith('/auth') || request.nextUrl.pathname.startsWith('/confirm-login'))) {
+    return NextResponse.redirect(new URL('/auth', request.url));
+  }
+
+  // Proceed with the request
+  const response = NextResponse.next();
+
+  // Intercept the response to handle 401 errors
+  if (response.status === 401 && refreshToken) {
+    // Refresh tokens
+    const refreshResponse = await refreshTokens();
+
+    // If token refresh was successful, proceed with the request
+    if (refreshResponse.status !== 401) {
+      return refreshResponse;
+    } else {
+      // If refresh fails, redirect to login
+      return NextResponse.redirect(new URL('/auth', request.url));
+    }
+  }
+
+  return response;
 }
+
+export const config = {
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+};

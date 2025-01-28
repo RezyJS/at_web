@@ -1,0 +1,34 @@
+/* components/AnnouncementCard.module.css */
+.announcementCard {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.announcementImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.announcementTitle {
+  font-size: 1.5rem;
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.announcementDescription {
+  font-size: 1rem;
+  color: #666;
+  margin: 0 0 8px;
+}
+
+.announcementDate {
+  font-size: 0.875rem;
+  color: #999;
+  margin: 0;
+}

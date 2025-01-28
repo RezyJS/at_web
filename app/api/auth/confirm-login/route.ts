@@ -21,9 +21,8 @@ export async function POST(request: Request) {
     // Set accessToken cookie
     res.cookies.set('accessToken', response.data.token, {
       httpOnly: true,
-      // maxAge: 15 * 60,
-      maxAge: 5,
-      // secure: true,
+      maxAge: 15 * 60,
+      secure: true,
       sameSite: 'strict',
     });
 
@@ -31,7 +30,7 @@ export async function POST(request: Request) {
     res.cookies.set('refreshToken', response.data.refresh_token, {
       httpOnly: true,
       maxAge: 30 * 24 * 60 * 60, // 30 days
-      // secure: true, // Set to true in production
+      secure: true, // Set to true in production
       sameSite: 'strict', // or 'strict' based on your requirements
     });
 

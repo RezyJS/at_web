@@ -24,13 +24,13 @@ export async function middleware(request: NextRequest) {
       response.cookies.set('accessToken', newAccessToken, {
         httpOnly: true,
         maxAge: 15 * 60, // 15 minutes
-        // secure: true, // Enable in production
+        secure: true, // Enable in production
         sameSite: 'strict',
       });
       response.cookies.set('refreshToken', newRefreshToken, {
         httpOnly: true,
         maxAge: 30 * 24 * 60 * 60, // 30 days
-        // secure: true, // Enable in production
+        secure: true, // Enable in production
         sameSite: 'strict',
       });
 

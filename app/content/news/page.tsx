@@ -89,7 +89,7 @@ export default function NewsPage() {
       {/* Back to Top Button */}
       {showScrollButton && (
         <Button
-          variant='secondary'
+          variant='default'
           className="fixed bottom-4 right-4 p-4 rounded-xl shadow-lg w-12 h-12" // Increased padding and size
           onClick={scrollToTop}
         >

@@ -54,7 +54,11 @@ export async function middleware(request: NextRequest) {
   }
 
   // If no tokens are found and the user is not on an auth page, redirect to login
-  if (!accessToken && !refreshToken && !(request.nextUrl.pathname.startsWith('/auth') || request.nextUrl.pathname.startsWith('/confirm-login'))) {
+  if (!accessToken && !refreshToken && !(
+    request.nextUrl.pathname.startsWith('/auth') || 
+    request.nextUrl.pathname.startsWith('/confirm-login') ||
+    request.nextUrl.pathname.startsWith('/registration')
+  )) {
     return NextResponse.redirect(new URL('/auth', request.url));
   }
 

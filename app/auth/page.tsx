@@ -27,6 +27,13 @@ export default function AuthPage() {
     }
   };
 
+  const handleRegistration = () => {
+    router.push('/registration');
+    if (!router) {
+      window.location.href = '/registration';
+    }
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-purple-50">
       <Card className="w-full max-w-md shadow-lg">
@@ -56,8 +63,11 @@ export default function AuthPage() {
               required
             />
           </div>
-          <Button onClick={handleLogin} type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+          <Button onClick={handleLogin} className="w-full bg-blue-600 hover:bg-blue-700">
             Далее
+          </Button>
+          <Button onClick={handleRegistration}  className="text-white w-full bg-green-500 hover:bg-green-600">
+            Регистрация
           </Button>
         </CardContent>
       </Card>

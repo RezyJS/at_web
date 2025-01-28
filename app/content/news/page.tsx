@@ -2,14 +2,12 @@
 'use client';
 import useSWRInfinite from 'swr/infinite';
 import AnnouncementCard from '@/components/AnnouncementCard';
-import { useRouter } from 'next/navigation';
 import styles from './NewsPage.module.css';
 import axios from 'axios';
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 export default function NewsPage() {
-  const router = useRouter();
 
   const getKey = (pageIndex: number, previousPageData: any) => {
     if (previousPageData && !previousPageData.length) return null; // Reached the end

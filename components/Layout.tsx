@@ -87,29 +87,29 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
               </VisuallyHidden>
               <nav className="flex flex-col space-y-4 mt-6">
                 <Link href="/news" passHref legacyBehavior>
-                  <a className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
+                  <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Новости
                   </a>
                 </Link>
                 <Link href="/claims" passHref legacyBehavior>
-                  <a className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
+                  <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Заявки
                   </a>
                 </Link>
                 <Link href="/map" passHref legacyBehavior>
-                  <a className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
+                  <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Карта
                   </a>
                 </Link>
                 <Link href="/profile" passHref legacyBehavior>
-                  <a className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
+                  <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Профиль
                   </a>
                 </Link>
                 <Button 
                   variant="outline" 
                   onClick={handleLogout}
-                  className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200"
+                  className="text-sm font-medium bg-transparent text-white hover:text-gray-200 hover:bg-white px-4 py-2 rounded-lg transition-colors duration-200"
                 >
                   Выйти
                 </Button>

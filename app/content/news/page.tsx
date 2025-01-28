@@ -23,23 +23,8 @@ export default function NewsPage() {
   const lastPage = data ? data[data.length - 1] : [];
   const hasMore = lastPage && lastPage.length > 0; // If the last page is not empty, there are more announcements
 
-  const handleLogout = async () => {
-    try {
-      // Call the logout API route
-      await axios.post('/api/auth/logout');
-
-      // Redirect to the auth page
-      router.push('/auth');
-    } catch (error) {
-      console.error('Failed to logout:', error);
-      alert('Failed to logout. Please try again.');
-    }
-  };
-
   return (
     <div className={styles.newsContainer}>
-      <h1>News</h1>
-      <button onClick={handleLogout} style={{ marginBottom: '20px' }}>Logout</button>
       {announcements.map((announcement: any) => (
         <AnnouncementCard
           key={announcement.uid} // Add a unique key prop

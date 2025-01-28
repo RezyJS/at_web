@@ -44,6 +44,10 @@ export async function middleware(request: NextRequest) {
     }
   };
 
+  if (accessToken && refreshToken && (!(request.nextUrl.pathname.startsWith('/content') || request.nextUrl.pathname.startsWith('/api')) || request.nextUrl.pathname === '/content')) {
+    return NextResponse.redirect(new URL('/content/news', request.url));
+  }
+
   // If no accessToken but refreshToken exists, try to refresh tokens
   if (!accessToken && refreshToken) {
     return refreshTokens();

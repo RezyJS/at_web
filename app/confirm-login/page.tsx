@@ -13,7 +13,7 @@ export default function ConfirmLoginPage() {
       await axios.post('/api/auth/confirm-login', { code });
 
       // Redirect to the news page after successful login
-      router.push('/news');
+      router.push('/content/news');
     } catch (error) {
       if (axios.isAxiosError(error)) {
         alert(error.response?.data?.error || 'Failed to confirm login');

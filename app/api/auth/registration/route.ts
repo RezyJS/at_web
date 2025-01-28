@@ -41,6 +41,7 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } else {
+    console.log(body);
     return NextResponse.json({ error: 'Failed to initiate registration' }, { status: response.status });
   }
 }

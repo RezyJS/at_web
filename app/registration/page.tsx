@@ -10,13 +10,13 @@ import { Smile } from "lucide-react";
 export default function RegistrationPage() {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
+  const [mail, setMail] = useState('');
   const router = useRouter();
 
   // TODO: Change!
   const handleRegistration = async () => {
     try {
-      await axios.post('/api/auth/login', { email });
+      await axios.post('/api/auth/registration', { first_name: name, second_name: surname, email: mail });
       router.push('/confirm-login');
       if (!router) {
         window.location.href = '/confirm-login';
@@ -89,8 +89,8 @@ export default function RegistrationPage() {
                 id="email"
                 type="email"
                 placeholder="example@test.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={mail}
+                onChange={(e) => setMail(e.target.value)}
                 className="mt-1 w-full"
                 required
               />

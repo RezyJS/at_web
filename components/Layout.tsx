@@ -109,7 +109,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Button 
                   variant="outline" 
                   onClick={handleLogout}
-                  className="text-sm font-medium bg-transparent text-white hover:text-gray-200 hover:bg-white px-4 py-2 rounded-lg transition-colors duration-200"
+                  className="text-sm font-medium bg-transparent text-white hover:text-blue-600 hover:bg-white px-4 py-2 rounded-lg transition-colors duration-200"
                 >
                   Выйти
                 </Button>

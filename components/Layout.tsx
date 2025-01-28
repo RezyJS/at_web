@@ -22,8 +22,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
       // Redirect to the auth page
       router.push('/auth');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.error('Failed to logout:', error);
       alert('Failed to logout. Please try again.');
     }
   };

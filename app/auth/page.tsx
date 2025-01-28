@@ -9,23 +9,12 @@ export default function AuthPage() {
 
   const handleLogin = async () => {
     try {
-      console.log('Sending request to /api/auth/login with email:', email);
-
-      // Send POST request using Axios
-      const response = await axios.post('/api/auth/login', { email });
-      console.log('Response from /api/auth/login:', response.data);
-
-      // Redirect to confirm login page
-      console.log('Redirecting to /confirm-login');
+      await axios.post('/api/auth/login', { email });
       router.push('/confirm-login');
-
-      // Fallback redirection
       if (!router) {
         window.location.href = '/confirm-login';
       }
     } catch (error) {
-      console.error('Error during login:', error);
-
       if (axios.isAxiosError(error)) {
         alert(error.response?.data?.error || 'Failed to initiate login');
       } else {

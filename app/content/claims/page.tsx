@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import useSWRInfinite from 'swr/infinite';
-import styles from './NewsPage.module.css';
+import styles from './ClaimsPage.module.css';
 import axios from 'axios';
 import { lazy, Suspense, useEffect, useState } from 'react';
-import NewsSkeleton from '@/components/NewsSkeleton';
+import ClaimsSkeleton from '@/components/ClaimsSkeleton';
 import { Button } from '@/components/ui/button';
 import { Loader2, ArrowUp } from 'lucide-react'; // Import ArrowUp icon
 
-const AnnouncementCard = lazy(() => import('@/components/AnnouncementCard'));
+const ClaimCard = lazy(() => import('@/components/ClaimCard'));
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-export default function NewsPage() {
+export default function ClaimsPage() {
   const getKey = (pageIndex: number, previousPageData: any) => {
     if (previousPageData && !previousPageData.length) return null; // Reached the end
-    return `/api/announcements${pageIndex ? `?afterId=${previousPageData[previousPageData.length - 1].uid}` : ''}`;
+    return `/api/claims${pageIndex ? `?afterId=${previousPageData[previousPageData.length - 1].id}` : ''}`;
   };
 
   const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
@@ -23,7 +23,7 @@ export default function NewsPage() {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   // Check if there are more announcements to load
-  const announcements = data ? data.flat() : [];
+  const claims = data ? data.flat() : [];
   const lastPage = data ? data[data.length - 1] : [];
   const hasMore = lastPage && lastPage.length > 0; // If the last page is not empty, there are more announcements
 
@@ -54,19 +54,19 @@ export default function NewsPage() {
   };
 
   return (
-    <div className={styles.newsContainer}>
+    <div className={styles.claimsContainer}>
       <Suspense
         fallback={
           <div className="grid gap-4 grid-cols-3">
             {Array.from({ length: 9 }).map((_, index) => (
-              <NewsSkeleton key={index} />
+              <ClaimsSkeleton key={index} />
             ))}
           </div>
         }
       >
         <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(316px,1fr))]">
-          {announcements.map((announcement: any) => (
-            <AnnouncementCard key={announcement.uid} announcement={announcement} />
+          {claims.map((claim: any) => (
+            <ClaimCard key={claim.id} claim={claim} />
           ))}
         </div>
       </Suspense>
@@ -80,7 +80,7 @@ export default function NewsPage() {
               setSize(size + 1);
             }}
           >
-            Больше новостей
+            Больше заявок
             {btnPressed ? <Loader2 className="animate-spin" /> : null}
           </Button>
         </div>

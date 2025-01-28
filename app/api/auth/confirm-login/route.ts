@@ -30,8 +30,8 @@ export async function POST(request: Request) {
     res.cookies.set('refreshToken', response.data.refresh_token, {
       httpOnly: true,
       maxAge: 30 * 24 * 60 * 60, // 30 days
-      secure: true, // Set to true in production
-      sameSite: 'strict', // or 'strict' based on your requirements
+      secure: true,
+      sameSite: 'strict',
     });
 
     return res;

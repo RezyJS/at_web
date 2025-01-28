@@ -43,28 +43,28 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList className="space-x-6">
               <NavigationMenuItem>
-                <Link href="/news" passHref legacyBehavior>
+                <Link href="/content/news" passHref legacyBehavior>
                   <NavigationMenuLink className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Новости
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/claims" passHref legacyBehavior>
+                <Link href="/content/claims" passHref legacyBehavior>
                   <NavigationMenuLink className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Заявки
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/map" passHref legacyBehavior>
+                <Link href="/content/map" passHref legacyBehavior>
                   <NavigationMenuLink className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Карта
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/profile" passHref legacyBehavior>
+                <Link href="/content/profile" passHref legacyBehavior>
                   <NavigationMenuLink className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Профиль
                   </NavigationMenuLink>
@@ -86,22 +86,22 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <SheetTitle>Меню</SheetTitle>
               </VisuallyHidden>
               <nav className="flex flex-col space-y-4 mt-6">
-                <Link href="/news" passHref legacyBehavior>
+                <Link href="/content/news" passHref legacyBehavior>
                   <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Новости
                   </a>
                 </Link>
-                <Link href="/claims" passHref legacyBehavior>
+                <Link href="/content/claims" passHref legacyBehavior>
                   <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Заявки
                   </a>
                 </Link>
-                <Link href="/map" passHref legacyBehavior>
+                <Link href="/content/map" passHref legacyBehavior>
                   <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Карта
                   </a>
                 </Link>
-                <Link href="/profile" passHref legacyBehavior>
+                <Link href="/content/profile" passHref legacyBehavior>
                   <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Профиль
                   </a>

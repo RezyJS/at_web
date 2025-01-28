@@ -1,0 +1,12 @@
+/* app/news/NewsPage.module.css */
+.claimsContainer {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.loadMoreButton {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  cursor: pointer;
+}

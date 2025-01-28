@@ -31,7 +31,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="bg-background border-b">
+      <header className="bg-white border-b sticky top-0">
         <div className="container flex items-center justify-between h-16 px-4">
           {/* Navigation Menu */}
           <NavigationMenu>

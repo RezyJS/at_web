@@ -106,6 +106,13 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     Профиль
                   </a>
                 </Link>
+                <Button 
+                  variant="outline" 
+                  onClick={handleLogout}
+                  className="bg-transparent border-white text-white hover:bg-white hover:text-blue-600 transition-colors duration-200 hidden md:inline-flex"
+                >
+                  Выйти
+                </Button>
               </nav>
             </SheetContent>
           </Sheet>

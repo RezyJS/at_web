@@ -20,9 +20,9 @@ export default function AuthPage() {
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        alert(error.response?.data?.error || 'Failed to initiate login');
+        alert(error.response?.data?.error || 'Возникла ошибка, попробуйте снова позже!');
       } else {
-        alert('An unexpected error occurred');
+        alert('Произошла непредвиденная ошибка!');
       }
     }
   };

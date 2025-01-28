@@ -1,34 +1,37 @@
-/* components/AnnouncementCard.module.css */
 .announcementCard {
-  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  margin: 16px 0;
+  transition: box-shadow 0.3s ease;
 }
 
-.announcementImage {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 12px;
+.announcementCard:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.announcementContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .announcementTitle {
-  font-size: 1.5rem;
-  margin: 0 0 8px;
-  color: #333;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+  color: #333333;
 }
 
 .announcementDescription {
   font-size: 1rem;
-  color: #666;
-  margin: 0 0 8px;
+  color: #666666;
+  margin: 0;
 }
 
 .announcementDate {
   font-size: 0.875rem;
-  color: #999;
+  color: #999999;
   margin: 0;
 }

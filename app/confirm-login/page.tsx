@@ -20,9 +20,9 @@ export default function ConfirmLoginPage() {
       router.push('/content/news');
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        alert(error.response?.data?.error || 'Failed to confirm login');
+        alert(error.response?.data?.error || 'Возникла ошибка, попробуйте снова позже!');
       } else {
-        alert('An unexpected error occurred');
+        alert('Произошла непредвиденная ошибка!');
       }
     }
   };

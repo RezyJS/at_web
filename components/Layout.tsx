@@ -73,7 +73,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Burger Menu for smaller screens */}
+          {/* Burger menu */}
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="outline" size="icon" className="bg-transparent border-white text-white hover:bg-white hover:text-blue-600">
@@ -109,7 +109,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Button 
                   variant="outline" 
                   onClick={handleLogout}
-                  className="bg-transparent border-white text-white hover:bg-white hover:text-blue-600 transition-colors duration-200 hidden md:inline-flex"
+                  className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200"
                 >
                   Выйти
                 </Button>

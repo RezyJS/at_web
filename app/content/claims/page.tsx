@@ -64,7 +64,7 @@ export default function ClaimsPage() {
           </div>
         }
       >
-        <div className="container grid gap-4 md:grid-cols-2 sm:grid-cols-1">
+        <div className="container grid gap-4 lg:grid-cols-2 md:grid-cols-1">
           {claims.map((claim: any) => (
             <ClaimCard key={claim.id} claim={claim} />
           ))}

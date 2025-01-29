@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useRouter } from 'next/navigation';
 
 interface Claim {
@@ -28,25 +27,13 @@ const ClaimCard: React.FC<ClaimCardProps> = ({ claim }) => {
     router.push(`/content/claims/${claim.id}`);
   };
   return (
-    <Card
-      className="w-[316px] max-w-md flex flex-col justify-between flex-shrink-0 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg cursor-pointer"
-      onClick={handleCardClick} // Add click event to trigger alert
-    >
-      {/* Title at the top */}
-      <CardHeader className="border-b">
-        <CardTitle>{truncateText(claim.title, 30)}</CardTitle>
-      </CardHeader>
-
-      {/* Description in the middle */}
-      <CardContent className="flex-1 p-6">
-        <p className="text-sm text-gray-700">{truncateText(claim.description)}</p>
-      </CardContent>
-
-      {/* Date at the bottom */}
-      <CardContent className="border-t p-6">
-        <p className="text-sm text-gray-500">{claim.datetime.slice(0, 11)}</p>
-      </CardContent>
-    </Card>
+    <div
+      onClick={handleCardClick}
+      className="border-neutral-200 border-[2px] p-[20px] gap-[10px] rounded-xl max-w-lg min-w-min flex flex-col justify-between transition-transform duration-300 ease-in-out bg-white transform hover:scale-105 hover:shadow-lg cursor-pointer">
+        <p className='font-bold text-xl border-b-2 border-b-neutral-200 pb-5 text-pretty'>{claim.title}</p>
+        <p className='font-medium text-md text-pretty'>{truncateText(claim.description, 200)}</p>
+        <p className='font-normal text-base text-neutral-500 border-t-2 border-t-neutral-200 pt-5 text-pretty'>Опубликовано: {claim.datetime.slice(0, 11)}</p>
+    </div>
   );
 };
 

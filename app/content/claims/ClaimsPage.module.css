@@ -1,5 +1,8 @@
 /* app/news/NewsPage.module.css */
 .claimsContainer {
+  border-left: 2px solid #eeeeee;
+  border-right: 2px solid #eeeeee;
+  width: max-content;
   margin: 0 auto;
   padding: 20px;
 }

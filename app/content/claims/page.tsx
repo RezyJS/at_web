@@ -57,14 +57,14 @@ export default function ClaimsPage() {
     <div className={styles.claimsContainer}>
       <Suspense
         fallback={
-          <div className="grid gap-4 grid-cols-3">
-            {Array.from({ length: 9 }).map((_, index) => (
+          <div className="grid grid-cols-2">
+            {Array.from({ length: 3 }).map((_, index) => (
               <ClaimsSkeleton key={index} />
             ))}
           </div>
         }
       >
-        <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(316px,1fr))]">
+        <div className="container grid gap-4 md:grid-cols-2 sm:grid-cols-1">
           {claims.map((claim: any) => (
             <ClaimCard key={claim.id} claim={claim} />
           ))}

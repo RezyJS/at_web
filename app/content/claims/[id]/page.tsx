@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image'; // Import the Image component
 
 // Define the Claim interface
 interface Claim {

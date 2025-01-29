@@ -57,14 +57,14 @@ export default function NewsPage() {
     <div className={styles.newsContainer}>
       <Suspense
         fallback={
-          <div className="grid gap-4 grid-cols-3">
-            {Array.from({ length: 9 }).map((_, index) => (
+          <div className="flex flex-col gap-[20px]">
+            {Array.from({ length: 3 }).map((_, index) => (
               <NewsSkeleton key={index} />
             ))}
           </div>
         }
       >
-        <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(316px,1fr))]">
+        <div className="flex flex-col gap-[20px]">
           {announcements.map((announcement: any) => (
             <AnnouncementCard key={announcement.uid} announcement={announcement} />
           ))}

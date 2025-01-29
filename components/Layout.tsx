@@ -63,13 +63,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/content/profile" passHref legacyBehavior>
-                  <NavigationMenuLink className="text-sm font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
-                    Профиль
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
 
@@ -99,11 +92,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Link href="/content/map" passHref legacyBehavior>
                   <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
                     Карта
-                  </a>
-                </Link>
-                <Link href="/content/profile" passHref legacyBehavior>
-                  <a className="text-sm text-center font-medium text-white hover:text-gray-200 hover:bg-white/10 px-4 py-2 rounded-lg transition-colors duration-200">
-                    Профиль
                   </a>
                 </Link>
                 <Button 

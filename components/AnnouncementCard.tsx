@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'; // Adjust the import path based on your project structure
+import { useRouter } from 'next/navigation';
 
 interface Announcement {
   uid: string;
@@ -20,8 +21,18 @@ function truncateText(text: string, maxLength = 100) {
 }
 
 const AnnouncementCard: React.FC<AnnouncementCardProps> = ({ announcement }) => {
+  const router = useRouter();
+  
+  const handleCardClick = () => {
+    router.push(`/content/news/${announcement.uid}`);
+  };
+
+
   return (
-    <Card className="w-[316px] max-w-md flex flex-col justify-between flex-shrink-0">
+    <Card
+      className="w-[316px] max-w-md flex flex-col justify-between flex-shrink-0 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg cursor-pointer"
+      onClick={handleCardClick} // Add click event to trigger alert
+    >
       {/* Title at the top */}
       <CardHeader className="border-b">
         <CardTitle>{truncateText(announcement.title, 30)}</CardTitle>

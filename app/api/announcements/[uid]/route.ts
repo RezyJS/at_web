@@ -4,8 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.nextUrl);
-  const uid = searchParams.get('uid');
+  const uid = request.url.slice(request.url.lastIndexOf('/'));
 
   if (uid === null) {
     return NextResponse.json({

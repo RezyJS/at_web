@@ -50,7 +50,7 @@ const Wrapper = ({ router, children }: { router: AppRouterInstance, children: Re
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 const getAnnouncementData = (uid: string): string => {
-  return `/api/announcements/${uid}?uid=${uid}`;
+  return `/api/announcements/${uid}`;
 } 
 
 const News = ({ params }: { params: Promise<{ uid: string }> }) => {

@@ -7,24 +7,28 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import useSWR from 'swr';
 import axios from 'axios';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const NewsData = ({ data }: { data: any }) => (
-  <Card
-    className="border-[2px] p-[20px] rounded-xl max-w-3xl mx-auto space-y-6"
-  >
-    <CardHeader className='border-b'>
-      <CardTitle>
-        {data.title}
-      </CardTitle>
-    </CardHeader>
-    <CardContent>
-      <p className="text-md text-muted-foreground">{data.description}</p>
-    </CardContent>
-    <CardContent className="border-t p-6">
-      <p className="text-sm text-gray-500">Опубликовано: {data.datetime.slice(0, 11)}</p>
-    </CardContent>
-  </Card>
+  <div className="min-h-screen p-6">
+    <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-blue-500 text-white p-6">
+        <h1 className="text-2xl font-bold">{data.title}</h1>
+      </div>
+      
+      <div className="p-6">
+        <p className="text-gray-700 leading-relaxed">{data.description}</p>
+
+        <div className="border-t border-gray-200 p-6">
+          <p className="text-sm text-gray-500">
+            Опубликовано:{' '}
+            <span className="font-medium">{new Date(data.datetime).toLocaleDateString()}</span>
+          </p>
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
 );
 
 const NewsSkeleton = () => (

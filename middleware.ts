@@ -38,6 +38,7 @@ export async function middleware(request: NextRequest) {
     } else {
       // If refresh fails, clear cookies and redirect to login
       const response = NextResponse.redirect(new URL('/auth', request.url));
+      console.log(`MIDDLEWARE: REFRESH FAILED`)
       response.cookies.delete('accessToken');
       response.cookies.delete('refreshToken');
       return response;

@@ -16,15 +16,15 @@ const NewsData = ({ data }: { data: any }) => (
       </div>
       
       <div className="p-6">
-        <p className="text-gray-700 leading-relaxed">{data.description}</p>
+        <p className="text-gray-700 leading-relaxed mb-[20px]">{data.description}</p>
 
-        <div className="border-t border-gray-200 p-6">
+        <div className="border-t border-gray-200">
           <p className="text-sm text-gray-500">
             Опубликовано:{' '}
-            <span className="font-medium">{new Date(data.datetime).toLocaleDateString()}</span>
+            <span className="font-medium">{data.datetime.slice(0, 11)}</span>
           </p>
         </div>
-        
+
       </div>
 
     </div>

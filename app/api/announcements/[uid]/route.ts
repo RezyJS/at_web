@@ -7,12 +7,7 @@ export async function GET(request: NextRequest) {
   const uid = request.url.slice(request.url.lastIndexOf('/'));
 
   if (uid === null) {
-    return NextResponse.json({
-      uid,
-      title: `Announcement Title for UID: ${uid}`,
-      description: 'This is the detailed description of the announcement.',
-      datetime: '2023-10-15T14:48:00Z',
-    })
+    return NextResponse.error();
   }
 
   const result = await fetch(`${baseURL}/v1/announcements/${uid}`, {

@@ -33,7 +33,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const isActive = (href: string) => pathname?.startsWith(href);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen min-w-[320px]">
       {/* Header */}
       <header className="bg-blue-600 shadow-lg sticky top-0 z-50">
         <div className="flex items-center justify-between gap-4 h-20 p-4">
@@ -151,13 +151,13 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container py-6">{children}</main>
+      <main className="flex-1 container min-w-[320px] py-6">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-background border-t">
-        <div className="container flex items-center justify-center h-16 px-4">
+      <footer className="bg-background min-w-[320px] border-t">
+        <div className="flex items-center justify-center h-16 px-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 В Центре внимания. Все права защищены.
+            © 2025 В Центре внимания.
           </p>
         </div>
       </footer>

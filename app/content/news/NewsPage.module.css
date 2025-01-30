@@ -2,7 +2,8 @@
 .newsContainer {
   border-left: 2px solid #eeeeee;
   border-right: 2px solid #eeeeee;
-  width: max-content;
+  min-width: max-content;
+  width: 75vw;
   margin: 0 auto;
   padding: 20px;
 }

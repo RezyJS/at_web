@@ -30,7 +30,7 @@ const AnnouncementCard: React.FC<AnnouncementCardProps> = ({ announcement }) => 
   return (
     <div
       onClick={handleCardClick}
-      className="p-[20px] gap-[10px] rounded-xl w-[75vw] min-w-min flex flex-col justify-between transition-transform duration-300 ease-in-out bg-white transform hover:scale-105 hover:shadow-lg cursor-pointer">
+      className="p-[20px] gap-[10px] rounded-xl w-[75vw] min-w-[320px] flex flex-col justify-between transition-transform duration-300 ease-in-out bg-white transform hover:scale-105 hover:shadow-lg cursor-pointer">
         <p className='font-bold text-xl text-pretty'>{truncateText(announcement.title, 50)}</p>
         <p className='font-medium text-md text-pretty'>{truncateText(announcement.description, 500)}</p>
         <p className='font-normal text-base text-neutral-500 text-pretty'>Опубликовано: {announcement.datetime.slice(0, 11)}</p>

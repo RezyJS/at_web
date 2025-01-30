@@ -29,7 +29,7 @@ const ClaimCard: React.FC<ClaimCardProps> = ({ claim }) => {
   return (
     <div
       onClick={handleCardClick}
-      className="border-neutral-200 border-[2px] p-[20px] gap-[10px] rounded-xl max-w-lg w-[75vw] min-w-fit flex flex-col justify-between transition-transform duration-300 ease-in-out bg-white transform hover:scale-105 hover:shadow-lg cursor-pointer">
+      className="border-neutral-200 border-[2px] p-[20px] gap-[10px] rounded-xl max-w-lg w-[75vw] min-w-[320px] flex flex-col justify-between transition-transform duration-300 ease-in-out bg-white transform hover:scale-105 hover:shadow-lg cursor-pointer">
         <p className='font-bold text-xl border-b-2 border-b-neutral-200 pb-5 text-pretty'>{claim.title}</p>
         <p className='font-medium text-md text-pretty'>{truncateText(claim.description, 200)}</p>
         <p className='font-normal text-base text-neutral-500 border-t-2 border-t-neutral-200 pt-5 text-pretty'>Опубликовано: {claim.datetime.slice(0, 11)}</p>

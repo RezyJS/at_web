@@ -57,7 +57,7 @@ export default function ClaimsPage() {
     <div className={styles.claimsContainer}>
       <Suspense
         fallback={
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-1">
             {Array.from({ length: 3 }).map((_, index) => (
               <ClaimsSkeleton key={index} />
             ))}

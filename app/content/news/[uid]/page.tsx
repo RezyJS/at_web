@@ -19,11 +19,12 @@ const NewsData = ({ data }: { data: any }) => (
 );
 
 const NewsSkeleton = () => (
-  <div className="border-neutral-100 animate-pulse border-[2px] p-[20px] rounded-xl w-xl mx-auto space-y-6">
-    <Skeleton className="h-8 min-w-[320px] w-full" />
-    <Skeleton className="h-4 min-w-[320px] w-full" />
-    <Skeleton className="h-4 min-w-[320px] w-full" />
-    <Skeleton className="h-4 min-w-[320px] w-full" />
+  <div className="flex flex-col gap-5 px-[20px] min-w-[320px] text-left text-pretty w-[75vw] mx-auto">
+    <div className='flex flex-col gap-2 relative after:content-[""] after:absolute after:left-0 after:-bottom-2 after:w-full after:h-[2px] after:bg-neutral-200'>
+      <Skeleton className="h-6 w-full" />
+      <Skeleton className="h-4 w-[210px]" />
+    </div>
+    <Skeleton className="h-20 w-full" />
   </div>
 );
 

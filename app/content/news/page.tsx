@@ -19,6 +19,7 @@ export default function NewsPage() {
   };
 
   const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
+  // TODO: ADD USE MEMO
   const [btnPressed, setBtnPressed] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
 

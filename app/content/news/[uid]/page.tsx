@@ -34,12 +34,6 @@ const Wrapper = ({ router, children }: { router: AppRouterInstance, children: Re
         <X />
       </Button>
     </div>
-      {/* <button
-        onClick={() => router.back()}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2 hover:bg-blue-600 transition-colors w-fit"
-      >
-        Назад
-      </button> */}
     { children }
   </div>
 );

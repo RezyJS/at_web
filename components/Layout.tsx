@@ -151,7 +151,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container min-w-[320px] py-6">{children}</main>
+      <main className="flex-1 justify-center min-w-[320px] py-6">{children}</main>
 
       {/* Footer */}
       <footer className="bg-background min-w-[320px] border-t">

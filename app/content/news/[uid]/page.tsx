@@ -11,7 +11,7 @@ import axios from 'axios';
 import { Button } from '@/components/ui/button';
 
 const NewsData = ({ data }: { data: any }) => (
-  <div className='px-[20px] min-w-[320px] text-left text-pretty'>
+  <div className='px-[20px] min-w-[320px] text-left text-pretty w-[75vw] mx-auto'>
     <h1 className="text-pretty text-2xl font-bold">{data.title}</h1>
     <p className='text-pretty text-neutral-500 relative after:content-[""] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-neutral-200 pb-2'>Опубликовано: {data.datetime.slice(0, 11)}</p>
     <p className='text-pretty pt-2 text-lg text-left font-medium'>{data.description}</p>
@@ -19,11 +19,11 @@ const NewsData = ({ data }: { data: any }) => (
 );
 
 const NewsSkeleton = () => (
-  <div className="border-neutral-100 animate-pulse border-[2px] p-[20px] rounded-xl max-w-3xl mx-auto space-y-6">
-    <Skeleton className="h-8 w-full" />
-    <Skeleton className="h-4 w-full" />
-    <Skeleton className="h-4 w-full" />
-    <Skeleton className="h-4 w-full" />
+  <div className="border-neutral-100 animate-pulse border-[2px] p-[20px] rounded-xl w-xl mx-auto space-y-6">
+    <Skeleton className="h-8 min-w-[320px] w-full" />
+    <Skeleton className="h-4 min-w-[320px] w-full" />
+    <Skeleton className="h-4 min-w-[320px] w-full" />
+    <Skeleton className="h-4 min-w-[320px] w-full" />
   </div>
 );
 

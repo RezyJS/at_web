@@ -1,7 +1,5 @@
 /* app/news/NewsPage.module.css */
 .newsContainer {
-  border-left: 2px solid #eeeeee;
-  border-right: 2px solid #eeeeee;
   min-width: max-content;
   width: 75vw;
   margin: 0 auto;

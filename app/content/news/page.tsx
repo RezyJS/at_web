@@ -6,7 +6,7 @@ import axios from 'axios';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import NewsSkeleton from '@/components/NewsSkeleton';
 import { Button } from '@/components/ui/button';
-import { Loader2, ArrowUp } from 'lucide-react'; // Import ArrowUp icon
+import { Loader2, ArrowUp, Frown } from 'lucide-react'; // Import ArrowUp icon
 
 const AnnouncementCard = lazy(() => import('@/components/AnnouncementCard'));
 
@@ -53,6 +53,18 @@ export default function NewsPage() {
       behavior: 'smooth',
     });
   };
+
+  if (error) {
+    return (
+      <div className='flex flex-col justify-center items-center h-[50vh] gap-[10px]'>
+          <Frown className='text-blue-600 h-12 w-12'/>
+          <div className='text-center'>
+            <p className='font-semibold text-lg'>Произошла ошибка загрузки.</p>
+            <p className='font-semibold text-lg'>Попробуйте обновить страницу.</p>
+          </div>
+        </div>
+    );
+  }
 
   return (
     <div className={styles.newsContainer}>

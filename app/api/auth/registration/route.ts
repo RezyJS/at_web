@@ -18,7 +18,6 @@ export async function POST(request: Request) {
   }
 
   if (maybeError.length !== 0) {
-    console.log(maybeError)
     return NextResponse.json(
       { error: maybeError.join('\n')},
       { status: 403 },
@@ -41,7 +40,6 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } else {
-    console.log(body);
     return NextResponse.json({ error: 'Failed to initiate registration' }, { status: response.status });
   }
 }

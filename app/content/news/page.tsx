@@ -18,7 +18,7 @@ export default function NewsPage() {
     return `/api/announcements${pageIndex ? `?afterId=${previousPageData[previousPageData.length - 1].uid}` : ''}`;
   };
 
-  const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
+  const { data, size, error, setSize } = useSWRInfinite(getKey, fetcher);
   // TODO: ADD USE MEMO
   const [btnPressed, setBtnPressed] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);

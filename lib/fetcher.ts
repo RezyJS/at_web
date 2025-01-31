@@ -49,8 +49,8 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
       }
     );
 
-    if (request.ok || request.status === 204) {
-      const answer = request.status === 204 ? {} : await request.json();
+    if (request.ok) {
+      const answer = request.body ? await request.json() : {};
       return { error: false, status: request.status, body: answer };
     }
 
@@ -65,7 +65,7 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
     const tokens = await refresh(args.refresh as string);
 
     if (tokens.error || tokens.body.newAccess === '') {
-      return { error: true, status: 400, body: {} }
+      return { error: true, status: 418, body: {} }
     }
 
     const { newAccess, newRefresh } = tokens.body;

@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
   const accessToken = request.cookies.get('accessToken')?.value;
   const refreshToken = request.cookies.get('refreshToken')?.value;
 
-  if (accessToken && refreshToken && (
+  if (refreshToken && (
     !(
       request.nextUrl.pathname.startsWith('/content') || 
       request.nextUrl.pathname.startsWith('/api')) || 

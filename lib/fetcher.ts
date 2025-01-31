@@ -39,12 +39,12 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
     })
   }
 
-  const attempt = async (headers: HeadersInit) => {
+  const attempt = async (method: string, headers: HeadersInit) => {
     const request = await fetch(
       args.url,
       {
-        method: args.method ? args.method : 'GET',
-        body: args.body ? JSON.stringify({ ...args.body }) : null,
+        method,
+        body: args.body ? JSON.stringify(args.body) : null,
         headers
       }
     );
@@ -70,7 +70,7 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
 
     const { newAccess, newRefresh } = tokens.body;
 
-    const retry = await attempt({ ...headers, Authorization: `Bearer ${newAccess}` });
+    const retry = await attempt(args.method ? args.method : 'GET', { ...headers, Authorization: `Bearer ${newAccess}` });
     if (retry.error) {
       return { error: true, status: retry.status, body: {} }
     }
@@ -79,7 +79,7 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
     return { error: false, status: retry.status, body: result, access: newAccess, refresh: newRefresh }
   }
 
-  const initial = await attempt({ ...headers, Authorization: `Bearer ${args.access}` });
+  const initial = await attempt(args.method ? args.method : 'GET', { ...headers, Authorization: `Bearer ${args.access}` });
 
   if (initial.error === false) {
     return { error: false, status: initial.status, body: initial.body };

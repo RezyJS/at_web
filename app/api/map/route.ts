@@ -1,19 +1,20 @@
-import { NextRequest, NextResponse } from 'next/server';
 import fetcher from '@/lib/fetcher';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const afterId = searchParams.get('afterId');
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  
+  const refresh = req.cookies.get('refreshToken')?.value;
+  const access = req.cookies.get('accessToken')?.value;
 
-  const refresh = request.cookies.get('refreshToken')?.value;
-  const access = request.cookies.get('accessToken')?.value;
-
-  const url = afterId
-    ? `${process.env.NEXT_PUBLIC_API_URL}/v1/my/claims/chunk?afterId=${afterId}`
-    : `${process.env.NEXT_PUBLIC_API_URL}/v1/my/claims/chunk`;
+  // Extract bounds from query parameters
+  const nwLat = parseFloat(searchParams.get('nwLat') || '0');
+  const nwLng = parseFloat(searchParams.get('nwLng') || '0');
+  const seLat = parseFloat(searchParams.get('seLat') || '0');
+  const seLng = parseFloat(searchParams.get('seLng') || '0');
 
   const apiRequest = await fetcher({
-    url,
+    url: `${process.env.NEXT_PUBLIC_API_URL}/v1/map/claims?lat1=${nwLat}&long1=${nwLng}&lat2=${seLat}&long2=${seLng}`,
     refresh,
     access
   })
@@ -25,7 +26,7 @@ export async function GET(request: NextRequest) {
     )
   }
   
-  const response = NextResponse.json(apiRequest.body.claims);
+  const response = NextResponse.json(apiRequest.body);
 
   if (apiRequest.refresh && apiRequest.access) {
     const { refresh, access } = apiRequest;

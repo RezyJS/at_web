@@ -102,7 +102,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-blue-600 text-white">
+            <SheetContent side="right" className="bg-blue-600 text-white z-[1002]">
               <VisuallyHidden>
                 <SheetTitle>Меню</SheetTitle>
               </VisuallyHidden>

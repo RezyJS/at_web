@@ -5,7 +5,8 @@ interface FetcherArguments {
   access?: string,
   refresh?: string,
   body?: object,
-  headers?: object
+  headers?: object,
+  method?: string
 }
 
 interface FetcherResult {
@@ -42,6 +43,7 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
     const request = await fetch(
       args.url,
       {
+        method: args.method ? args.method : 'GET',
         body: args.body ? JSON.stringify({ ...args.body }) : null,
         headers
       }

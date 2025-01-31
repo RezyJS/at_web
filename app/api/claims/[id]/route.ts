@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from 'next/server';
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function GET(request: NextRequest) {
-  const uid = request.url.slice(request.url.lastIndexOf('/'));
+  const id = request.url.slice(request.url.lastIndexOf('/'));
 
   const refresh = request.cookies.get('refreshToken')?.value;
   const access = request.cookies.get('accessToken')?.value;
 
-  if (uid === null) {
+  if (id === null) {
     return NextResponse.json(
       { error: 'No uid in request' },
       { status: 400 }
@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
   }
 
   const apiRequest = await fetcher({
-    url: `${baseURL}/v1/announcements/${uid}`,
+    url: `${baseURL}/v1/my/claims/${id}`,
     refresh,
     access
   });

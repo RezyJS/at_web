@@ -1,36 +1,49 @@
 import { NextRequest, NextResponse } from 'next/server';
-import axios from 'axios';
+import fetcher from '@/lib/fetcher';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const afterId = searchParams.get('afterId');
 
+  const refresh = request.cookies.get('refreshToken')?.value;
+  const access = request.cookies.get('accessToken')?.value;
+
   const url = afterId
     ? `${process.env.NEXT_PUBLIC_API_URL}/v1/my/claims/chunk?afterId=${afterId}`
     : `${process.env.NEXT_PUBLIC_API_URL}/v1/my/claims/chunk`;
 
-  try {
-    // Fetch announcements from the backend
-    const response = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${request.cookies.get('accessToken')?.value}`,
-      },
-    });
-
-    // Assume the backend returns an array of announcements
-    return NextResponse.json(response.data.claims);
-  } catch (error) {
-    // Handle errors
-    if (axios.isAxiosError(error)) {
+    const apiRequest = await fetcher({
+      url,
+      refresh,
+      access
+    })
+  
+    if (apiRequest.error) {
       return NextResponse.json(
-        { error: error.response?.data?.error || 'Failed to fetch announcements' },
-        { status: error.response?.status || 500 }
-      );
-    } else {
-      return NextResponse.json(
-        { error: 'An unexpected error occurred' },
-        { status: 500 }
-      );
+        { error: apiRequest.error },
+        { status: apiRequest.status }
+      )
     }
-  }
+  
+    const response = NextResponse.json(apiRequest.body.claims);
+  
+    if (apiRequest.refresh && apiRequest.access) {
+      const { refresh, access } = apiRequest;
+  
+      response.cookies.set('accessToken', access, {
+        httpOnly: true,
+        maxAge: 15 * 60, // 15 minutes
+        secure: true, // Enable in production
+        sameSite: 'strict',
+      });
+  
+      response.cookies.set('refreshToken', refresh, {
+        httpOnly: true,
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+        secure: true, // Enable in production
+        sameSite: 'strict',
+      });
+    }
+  
+    return response;
 }

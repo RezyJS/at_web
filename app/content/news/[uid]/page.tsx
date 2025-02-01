@@ -29,7 +29,7 @@ const NewsSkeleton = () => (
 );
 
 const Wrapper = ({ router, children }: { router: AppRouterInstance, children: React.ReactNode }) => (
-  <div className="w-full flex flex-col">
+  <div className="w-full flex flex-col py-6">
     <div className='px-4 flex justify-end'>
       <Button onClick={() => router.back()} className='w-12 h-12 bg-red-500 hover:bg-red-700'>
         <X />

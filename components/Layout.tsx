@@ -35,7 +35,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col min-h-screen min-w-[320px]">
       {/* Header */}
-      <header className="bg-blue-600 shadow-lg sticky top-0 z-50">
+      <header className="bg-blue-600 shadow-lg sticky top-0 z-[1003]">
         <div className="flex items-center justify-between gap-4 h-20 p-4">
           {/* Company Name */}
           <Link href="/" passHref legacyBehavior>
@@ -45,6 +45,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           </Link>
 
           {/* Desktop Navigation */}
+          {/* TODO: Make z-index higher than map */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList className="space-x-6">
               <NavigationMenuItem>
@@ -102,7 +103,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-blue-600 text-white z-[1002]">
+            <SheetContent side="right" className="bg-blue-600 text-white z-[1004]">
               <VisuallyHidden>
                 <SheetTitle>Меню</SheetTitle>
               </VisuallyHidden>

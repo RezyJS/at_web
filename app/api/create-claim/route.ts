@@ -8,11 +8,11 @@ export async function POST(request: NextRequest) {
   const body = await request.formData();
 
   const response = await fetcher({
-    url: `${process.env.NEXT_PUBLIC_API_URL}/v1/my/claims`,
+    url: `${process.env.NEXT_PUBLIC_API_URL}/v1/my/claims/`,
     method: 'POST',
     body,
     access,
-    refresh,
+    refresh
   });
 
   if (response.error) {

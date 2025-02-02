@@ -124,7 +124,7 @@ const CreateClaim = ({ setBounds }: { setBounds: Dispatch<SetStateAction<{ nw: n
     <Map setBounds={setBounds}>
       <LocationFinderDummy />
       <Dialog open={isModalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="z-[1001] max-w-[95vw] sm:max-w-md max-h-[90vh] overflow-y-auto mt-10 sm:mt-0">
+        <DialogContent className="z-[1005] max-w-[95vw] sm:max-w-md max-h-[90vh] overflow-y-auto mt-10 sm:mt-0">
           <DialogHeader>
             <DialogTitle>Создание заявки</DialogTitle>
           </DialogHeader>

@@ -79,7 +79,7 @@ const CustomMarkerCluster = ({ markers }: CustomMarkerClusterProps) => {
         setIsModalOpen(open);
         setIsPhotoView(false); // Reset photo view when closing the dialog
       }}>
-        <DialogContent className="z-[1000] max-w-[90vw] max-h-[90vh] overflow-y-auto">
+        <DialogContent className="z-[1005] max-w-[90vw] max-h-[90vh] overflow-y-auto">
           {!isPhotoView ? (
             // Main Content View
             <>

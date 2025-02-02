@@ -94,11 +94,13 @@ const CreateClaim = ({ setBounds }: { setBounds: Dispatch<SetStateAction<{ nw: n
     formData.append('title', title);
     formData.append('category', category);
     formData.append('description', description);
-    formData.append('lat', latlng.lat);
-    formData.append('lng', latlng.lng);
-    photos.forEach((photo) => {
-      formData.append(`photos`, photo);
+    formData.append('latitude', latlng.lat);
+    formData.append('longitude', latlng.lng);
+    photos.forEach((photo, index) => {
+      formData.append(`photo${index + 1}`, photo);
     });
+
+    console.info(formData);
 
     try {
       const response = await fetch('/api/create-claim', {
@@ -184,7 +186,8 @@ const CreateClaim = ({ setBounds }: { setBounds: Dispatch<SetStateAction<{ nw: n
                   </div>
                 )}
               </div>
-              <div className='flex w-full justify-center'>
+              <div className='flex w-full justify-evenly'>
+                <Button type='reset' onClick={() => setPhotos([])}>Очистить фото</Button>
                 <Button type="submit">Создать заявку</Button>
               </div>
             </div>

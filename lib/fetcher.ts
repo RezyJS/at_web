@@ -4,7 +4,7 @@ interface FetcherArguments {
   url: string,
   access?: string,
   refresh?: string,
-  body?: object,
+  body?: BodyInit,
   headers?: object,
   method?: string
 }
@@ -44,7 +44,7 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
       args.url,
       {
         method,
-        body: args.body ? JSON.stringify(args.body) : null,
+        body: args.body,
         headers
       }
     );

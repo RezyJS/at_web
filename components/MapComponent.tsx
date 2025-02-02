@@ -145,7 +145,7 @@ const CreateClaim = ({ setBounds }: { setBounds: Dispatch<SetStateAction<{ nw: n
                   <SelectTrigger>
                     <SelectValue placeholder="Выберите категорию" />
                   </SelectTrigger>
-                  <SelectContent className='z-[1002]'>
+                  <SelectContent className='z-[1006]'>
                     <SelectItem value="road">Дороги</SelectItem>
                     <SelectItem value="environment">Экология</SelectItem>
                     <SelectItem value="infrastructure">Инфраструктура</SelectItem>

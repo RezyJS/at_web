@@ -65,7 +65,7 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
     const tokens = await refresh(args.refresh);
 
     if (tokens.error || tokens.body.newAccess === '') {
-      return { error: true, status: 418, body: {} }
+      return { error: true, status: tokens.status, body: {} }
     }
 
     const { newAccess, newRefresh } = tokens.body;

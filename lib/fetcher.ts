@@ -56,13 +56,13 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
 
     return { error: true, status: request.status, body: {} }
   }
-  
-  if (!args.access && !args.refresh) {
-    return { error: true, status: 405, body: {} }
-  }
 
   if (!args.access) {
-    const tokens = await refresh(args.refresh as string);
+    if (!args.refresh) {
+      return { error: true, status: 405, body: {} }
+    }
+
+    const tokens = await refresh(args.refresh);
 
     if (tokens.error || tokens.body.newAccess === '') {
       return { error: true, status: 418, body: {} }

@@ -13,9 +13,9 @@ import Markdown from 'react-markdown';
 
 const NewsData = ({ data }: { data: any }) => (
   <div className='px-[20px] min-w-[320px] text-left text-pretty w-[75vw] mx-auto'>
-    <h1 className="text-pretty text-2xl font-bold"><Markdown>{data.title}</Markdown></h1>
+    <Markdown className="text-pretty text-2xl font-bold">{data.title}</Markdown>
     <p className='text-pretty text-neutral-500 relative after:content-[""] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-neutral-200 pb-2'>Опубликовано: {data.datetime.slice(0, 11)}</p>
-    <p className='text-pretty pt-2 text-lg text-left font-medium'><Markdown>{data.description}</Markdown></p>
+    <Markdown className='text-pretty pt-2 text-lg text-left font-medium'>{data.description}</Markdown>
   </div>
 );
 

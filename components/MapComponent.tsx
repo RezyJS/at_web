@@ -100,8 +100,6 @@ const CreateClaim = ({ setBounds }: { setBounds: Dispatch<SetStateAction<{ nw: n
       formData.append(`photo${index + 1}`, photo);
     });
 
-    console.info(formData);
-
     try {
       const response = await fetch('/api/create-claim', {
         method: 'POST',

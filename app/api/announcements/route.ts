@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
   if (apiRequest.error) {
     return NextResponse.json(
       { error: apiRequest.error },
-      { status: apiRequest.status }
+      { status: apiRequest.status || 418 }
     )
   }
 

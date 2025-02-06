@@ -86,7 +86,10 @@ const fetcher = async (args: FetcherArguments): Promise<FetcherResult> => {
   }
 
   if (initial.status === 401) {
-    const refreshRequest = await refresh(args.refresh as string);
+    if (!args.refresh) {
+      return { error: true, status: 405, body: {} }
+    }
+    const refreshRequest = await refresh(args.refresh);
     const { newAccess, newRefresh } = refreshRequest.body;
 
     const retry = await attempt(args.method ? args.method : 'GET', { ...headers, Authorization: `Bearer ${newAccess}` });

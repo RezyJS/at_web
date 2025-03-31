@@ -232,7 +232,7 @@ const MapComponent = () => {
   }, [bounds]);
 
   return (
-    <div className="relative h-screen w-full">
+    <div>
       {loading && (
         <div className="absolute z-[1000] top-4 left-4 bg-white p-4 rounded shadow-lg">
           <span className="animate-spin">⏳</span> Loading claims...

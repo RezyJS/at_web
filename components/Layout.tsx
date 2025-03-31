@@ -31,7 +31,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   // Helper function to check active link
   const isActive = (href: string) => pathname?.startsWith(href);
-
+  
   return (
     <div className="flex flex-col min-h-screen min-w-[320px]">
       {/* Header */}

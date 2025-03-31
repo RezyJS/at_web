@@ -9,7 +9,7 @@ const MapComponent = dynamic(() => import('@/components/MapComponent'), {
 
 export default function Home() {
   return (
-    <div className='p-0 m-0 h-full w-full'>
+    <div className='p-0 m-0'>
       <MapComponent />
     </div>
   );
